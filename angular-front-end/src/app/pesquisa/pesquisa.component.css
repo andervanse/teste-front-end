@@ -1,0 +1,14 @@
+.container {
+    padding: 4em 0em 4em 0em;
+    text-align: center;
+    width: 100%;
+}
+
+mat-form-field {
+    margin: 0px 0px 0px 2px;
+    width: 40%;
+}
+
+button.mat-raised-button {
+    margin: 15px;
+}
