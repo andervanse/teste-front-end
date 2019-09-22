@@ -1,0 +1,29 @@
+<h2 *ngIf="!hideMinimizeBtn" mat-dialog-title>{{ data.titulo }}</h2>
+<div mat-dialog-content>
+
+    <div class="video-container">
+        <iframe [src]="safeSrc"
+                frameborder="0"
+                gesture="media"
+                allow="encrypted-media" 
+                webkitallowfullscreen 
+                mozallowfullscreen 
+                allowfullscreen></iframe>
+    </div>
+
+    <p *ngIf="!hideMinimizeBtn" class="description">{{ data.descricao }}</p>
+</div>
+<hr>
+<div class="statistics" *ngIf="data.estatisticas">
+        <mat-icon aria-hidden="false" aria-label="eye">remove_red_eye</mat-icon> <span> {{ data.estatisticas.quantidadeViews }} </span>
+        <span class="fill-space"></span>
+        <mat-icon aria-hidden="false" aria-label="Thumb Up">thumb_up_alt</mat-icon> <span> {{ data.estatisticas.quantidadeLikes }} </span>
+        <mat-icon aria-hidden="false" aria-label="Thumb Down">thumb_down_alt</mat-icon> <span> {{ data.estatisticas.quantidadeDeslikes }} </span>
+ </div>
+ 
+<div mat-dialog-actions>    
+    <button mat-raised-button class="btn-minimize" *ngIf="!hideMinimizeBtn" (click)="onMinimize()">Minimizar</button>
+    <button mat-raised-button class="btn-maximize" *ngIf="hideMinimizeBtn" (click)="onMaximize()">Maximizar</button>
+    <span class="fill-space"></span>
+    <button mat-raised-button [mat-dialog-close]="data">Fechar</button>
+</div>
