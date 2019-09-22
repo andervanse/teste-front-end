@@ -1,0 +1,62 @@
+.mat-dialog-content {
+    overflow: hidden;
+}
+
+.statistics span {
+    margin: 4px 4px 4px 4px;
+    font-size: 14px;
+}
+
+.statistics {
+    height: 30px;
+    display: contents;
+}
+
+.video-container {
+    position: relative;
+    padding-bottom: 56.25%;
+    padding-top: 30px;
+    height: 0; 
+    overflow: hidden;
+}
+    
+.video-container iframe,
+.video-container object,
+.video-container embed {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+@media (max-width: 568px) {
+    .cdk-global-overlay-wrapper {
+        justify-content: center;
+        align-items: center;
+    }
+    .cdk-overlay-pane {
+        max-height: 80vw;
+    }
+    .mat-dialog-content {
+        padding: 0 5px;
+    }
+    h2 {
+        height: 10px;
+        visibility: hidden;
+    }
+    .description {
+        font-size: 12px;
+    }
+    .btn-minimize {
+        visibility: hidden;
+    }
+    .btn-maximize {
+        visibility: hidden;
+    }
+    .statistics span {
+        font-size: 14px;
+        padding: 6px 6px 2px 2px;
+    }
+
+}

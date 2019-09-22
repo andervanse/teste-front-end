@@ -1,8 +1,5 @@
 <div class="container">
-
-    <div *ngIf="videos.items.length > 0; else pesquisaVazia">
-
-        <h2>Lista de Vídeos</h2>
+    <div *ngIf="videos.items.length > 0">
         <div class="list-card" infiniteScroll [infiniteScrollDistance]="1" [infiniteScrollThrottle]="1000"
             (scrolled)="onScroll()">
 
@@ -17,16 +14,9 @@
                     <p>{{ video.descricao }}</p>
                 </mat-card-content>
                 <mat-card-actions>
-                    <button mat-raised-button color="primary">ASSISTIR</button>
+                    <button mat-raised-button color="primary" (click)="onAssistirVideoClick(video)">ASSISTIR</button>
                 </mat-card-actions>
             </mat-card>
         </div>
     </div>
-
-    <ng-template #pesquisaVazia>
-        <div class="container">
-            <h2>Pesquise vídeos utilizando o campo acima</h2>
-        </div>
-    </ng-template>
-
 </div>

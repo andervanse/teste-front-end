@@ -19,6 +19,15 @@ export class Video {
     canal: string;
     descricao: string;    
     imagens: Imagens[];
+    estatisticas: Estatisticas;
+}
+
+export class Estatisticas {
+    quantidadeViews: number;
+    quantidadeLikes: number;
+    quantidadeDeslikes: number;
+    quantidadeFavoritos: number;
+    quantidadeComentarios: number;
 }
 
 export class Imagens {

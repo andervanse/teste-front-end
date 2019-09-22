@@ -1,7 +1,7 @@
 <div class="container">
 
     <mat-form-field>
-        <input matInput placeholder="Pesquisar" [formControl]="textoPesquisa">
+        <input matInput class="pesquisa-input" placeholder="Pesquisar" [formControl]="textoPesquisa">
         <mat-error *ngIf="textoPesquisa.invalid">{{ obterMensagensErro() }}</mat-error>
     </mat-form-field>
 

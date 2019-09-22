@@ -1,5 +1,5 @@
 import { Component, OnInit, EventEmitter, OnDestroy, Output } from '@angular/core';
-import { ListaVideos, Pesquisa } from './videos.model';
+import { ListaVideos, Pesquisa, Video } from './videos.model';
 import { VideosService } from './videos.service';
 import { Subscription } from 'rxjs';
 
@@ -14,6 +14,8 @@ export class VideosComponent implements OnInit, OnDestroy {
   mapVideosId: Map<string, string> = new Map();
 
   @Output() scrollDown = new EventEmitter<Pesquisa>();
+  @Output() videoSelecionado = new EventEmitter<Video>();
+
   subscription: Subscription;
 
   constructor(private videosService: VideosService) { }
@@ -49,6 +51,10 @@ export class VideosComponent implements OnInit, OnDestroy {
   */
   onScroll() {
     this.scrollDown.emit(this.videos.pesquisa);
+  }
+
+  onAssistirVideoClick(video: Video) {
+    this.videoSelecionado.emit(video);
   }
 
   ngOnDestroy() {
