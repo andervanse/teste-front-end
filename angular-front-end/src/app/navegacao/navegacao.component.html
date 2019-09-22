@@ -2,9 +2,12 @@
   <mat-sidenav #drawer class="sidenav" fixedInViewport
       [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
       [mode]="(isHandset$ | async) ? 'over' : 'side'">
-    <mat-toolbar>Menu</mat-toolbar>
+    <mat-toolbar>
+       <a href="#" mat-list-item [routerLink]="['home']" (click)="drawer.toggle()" style="color:rgb(48, 47, 47)">Home</a>       
+    </mat-toolbar>
+    <hr>
     <mat-nav-list>
-      <a mat-list-item href="#" (click)="drawer.toggle()">Sobre</a>
+      <a mat-list-item href="#" [routerLink]="['sobre']" (click)="drawer.toggle()">Sobre</a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
@@ -17,14 +20,16 @@
         *ngIf="isHandset$ | async">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
-      
-      <span>iCasei Vídeos</span>
+      &nbsp;
+      <a href="#" mat-list-item [routerLink]="['home']">
+        <span>iCasei Vídeos</span>
+      </a>
       
       <div class="container-center">
       </div>
 
       <div *ngIf="!(isHandset$ | async)">
-          <a type="button" mat-button class="mat-button" href="#">Sobre</a>&nbsp;&nbsp;
+          <a type="button" mat-button class="mat-button" href="#" [routerLink]="['sobre']">Sobre</a>&nbsp;&nbsp;
       </div>
     </mat-toolbar>
 

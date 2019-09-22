@@ -13,6 +13,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
+import { RouterModule } from '@angular/router';
 import {MatDialogModule, MAT_DIALOG_DEFAULT_OPTIONS} from '@angular/material/dialog';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -20,10 +21,20 @@ import { AppComponent } from './app.component';
 import { NavegacaoComponent } from './navegacao/navegacao.component';
 import { PesquisaComponent } from './pesquisa/pesquisa.component';
 import { VideosComponent } from './videos/videos.component';
+import { SobreComponent } from './sobre/sobre.component';
 import { VideosService } from './videos/videos.service';
 import { VideoPlayerComponent } from './videos/video-player/video-player.component';
 
+
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { HomeComponent } from './home/home.component';
+
+const appRoutes = [
+  { path:'', redirectTo: '/home', pathMatch: 'full' },
+  { path:'home', component: HomeComponent },
+  { path:'sobre', component: SobreComponent },
+  { path: '**', redirectTo: '' }
+];
 
 @NgModule({
   declarations: [
@@ -31,10 +42,13 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
     NavegacaoComponent,
     PesquisaComponent,
     VideosComponent,
-    VideoPlayerComponent    
+    VideoPlayerComponent,
+    SobreComponent,
+    HomeComponent    
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
@@ -47,10 +61,10 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
     MatFormFieldModule,
     MatInputModule,
     MatCardModule,
-    BrowserAnimationsModule,
     HttpClientModule,
     InfiniteScrollModule,
-    MatDialogModule
+    MatDialogModule,
+    RouterModule.forRoot(appRoutes, { useHash: true })
   ],
   entryComponents: [VideoPlayerComponent],
   providers: [VideosService, { provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: [] }],

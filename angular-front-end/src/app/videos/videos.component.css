@@ -4,11 +4,6 @@
   margin: 0.5em 0.5em 1.5em 0.5em;
 }
   
-.header-image {
-  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
-  background-size: cover;
-}
-
 .list-card {
   display: flex;
   flex-direction: column;

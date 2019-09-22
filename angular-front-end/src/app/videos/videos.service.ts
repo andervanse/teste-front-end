@@ -28,51 +28,51 @@ export class VideosService {
 
         const QUERY_PARAMS = `part=id,snippet&key=${environment.apiKey}&type=video&q=${pesquisa.texto}${pagina}`;
 
-        // return this.http.get<ListaVideos>(`${environment.apiBaseUrl}/search?${QUERY_PARAMS}`)
-        //     .pipe(
-        //         map((response: any) => {
-        //             this.videos                         = new ListaVideos();
-        //             this.videos.pesquisa.texto          = pesquisa.texto;
-        //             this.videos.pesquisa.paginaAnterior = response.prevPageToken;
-        //             this.videos.pesquisa.proximaPagina  = response.nextPageToken;
+        return this.http.get<ListaVideos>(`${environment.apiBaseUrl}/search?${QUERY_PARAMS}`)
+            .pipe(
+                map((response: any) => {
+                    this.videos                         = new ListaVideos();
+                    this.videos.pesquisa.texto          = pesquisa.texto;
+                    this.videos.pesquisa.paginaAnterior = response.prevPageToken;
+                    this.videos.pesquisa.proximaPagina  = response.nextPageToken;
 
-        //             for (let i = 0; i < response.items.length; i++) {
-        //                 let video = this.converterParaModelo(response.items[i]);                        
-        //                 this.videos.items.push(video);
-        //             }
+                    for (let i = 0; i < response.items.length; i++) {
+                        let video = this.converterParaModelo(response.items[i]);                        
+                        this.videos.items.push(video);
+                    }
 
-        //             this.pesquisaRealizada.next(this.videos);
-        //             return this.videos;
-        //         })
-        //     );
+                    this.pesquisaRealizada.next(this.videos);
+                    return this.videos;
+                })
+            );
 
-        return this.fakeVideoData();
+        //return this.fakeVideoData();
     }
 
     obterEstatisticasVideo(videoId: string): Observable<Estatisticas> {
 
         const QUERY_PARAMS = `id=${videoId}&part=statistics&key=${environment.apiKey}`;
 
-        // return this.http.get<Estatisticas>(`${environment.apiBaseUrl}/videos?${QUERY_PARAMS}`)
-        //     .pipe(
-        //         map((response: any) => {
-        //             let estatisticas = null;
+        return this.http.get<Estatisticas>(`${environment.apiBaseUrl}/videos?${QUERY_PARAMS}`)
+            .pipe(
+                map((response: any) => {
+                    let estatisticas = null;
 
-        //             for (let i = 0; i < response.items.length; i++) {
-        //                 if (response.items[i].statistics) {
-        //                     estatisticas                       = new Estatisticas();
-        //                     estatisticas.quantidadeViews       = response.items[i].statistics.viewCount;
-        //                     estatisticas.quantidadeLikes       = response.items[i].statistics.likeCount;
-        //                     estatisticas.quantidadeDeslikes    = response.items[i].statistics.dislikeCount;
-        //                     estatisticas.quantidadeFavoritos   = response.items[i].statistics.favoriteCount;
-        //                     estatisticas.quantidadeComentarios = response.items[i].statistics.commentCount;
-        //                 }                       
-        //             }
+                    for (let i = 0; i < response.items.length; i++) {
+                        if (response.items[i].statistics) {
+                            estatisticas                       = new Estatisticas();
+                            estatisticas.quantidadeViews       = response.items[i].statistics.viewCount;
+                            estatisticas.quantidadeLikes       = response.items[i].statistics.likeCount;
+                            estatisticas.quantidadeDeslikes    = response.items[i].statistics.dislikeCount;
+                            estatisticas.quantidadeFavoritos   = response.items[i].statistics.favoriteCount;
+                            estatisticas.quantidadeComentarios = response.items[i].statistics.commentCount;
+                        }                       
+                    }
 
-        //             return estatisticas;
-        //         })
-        //     );
-        return this.fakeStatisticsData();
+                    return estatisticas;
+                })
+            );
+        //return this.fakeStatisticsData();
     }
 
 
@@ -81,7 +81,8 @@ export class VideosService {
 
         let video = new Video();
         video.id = response.id.videoId || response.id;
-        video.canal = response.snippet.channelId;
+        video.canalId = response.snippet.channelId;
+        video.tituloCanal = response.snippet.channelTitle;
         video.dataPublicacao = response.snippet.publishedAt;
         video.descricao = response.snippet.description;
         video.titulo = response.snippet.title;

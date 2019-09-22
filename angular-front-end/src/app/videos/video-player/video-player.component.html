@@ -15,7 +15,7 @@
 </div>
 <hr>
 <div class="statistics" *ngIf="data.estatisticas">
-        <span>{{ data.estatisticas.quantidadeViews }} visualizações</span>
+        <mat-icon aria-hidden="false" aria-label="eye">remove_red_eye</mat-icon> <span> {{ data.estatisticas.quantidadeViews }} </span>
         <span class="fill-space"></span>
         <mat-icon aria-hidden="false" aria-label="Thumb Up">thumb_up_alt</mat-icon> <span> {{ data.estatisticas.quantidadeLikes }} </span>
         <mat-icon aria-hidden="false" aria-label="Thumb Down">thumb_down_alt</mat-icon> <span> {{ data.estatisticas.quantidadeDeslikes }} </span>

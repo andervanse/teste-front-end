@@ -1,13 +1,3 @@
 <app-navegacao>
-  <div class="pesquisa-container" [@changeDivSize]="currentState"></div>
-  <app-pesquisa (pesquisarClick)="onPesquisarVideo($event)"></app-pesquisa>
-
-  <div class="container" *ngIf="mensagemErro">
-    <h2 class="danger">{{ mensagemErro }}</h2>
-  </div>
-
-  <app-videos *ngIf="!mensagemErro" 
-      (scrollDown)="onScrollDown($event)"
-      (videoSelecionado)="onOpenVideoModal($event)"></app-videos>
- 
+   <router-outlet></router-outlet>
 </app-navegacao>

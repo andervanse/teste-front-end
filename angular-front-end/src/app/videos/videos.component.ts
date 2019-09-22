@@ -12,6 +12,7 @@ export class VideosComponent implements OnInit, OnDestroy {
 
   videos: ListaVideos = new ListaVideos();
   mapVideosId: Map<string, string> = new Map();
+  inicializado: boolean = false;
 
   @Output() scrollDown = new EventEmitter<Pesquisa>();
   @Output() videoSelecionado = new EventEmitter<Video>();
@@ -21,10 +22,11 @@ export class VideosComponent implements OnInit, OnDestroy {
   constructor(private videosService: VideosService) { }
 
   ngOnInit() {
+    this.inicializado = true;
 
     this.subscription = this.videosService.pesquisaRealizada
       .subscribe((listaVideos: ListaVideos) => {
-
+          this.inicializado  = false;
           let ultimaPesquisa = this.videos.pesquisa;
           let pesquisaAtual  = listaVideos.pesquisa;
                     

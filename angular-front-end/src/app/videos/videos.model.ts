@@ -16,7 +16,8 @@ export class Video {
     id: string;
     dataPublicacao: Date;
     titulo: string;
-    canal: string;
+    canalId: string;
+    tituloCanal: string;
     descricao: string;    
     imagens: Imagens[];
     estatisticas: Estatisticas;

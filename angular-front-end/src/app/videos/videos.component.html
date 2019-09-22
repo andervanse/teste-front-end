@@ -1,13 +1,12 @@
 <div class="container">
-    <div *ngIf="videos.items.length > 0">
+    <div *ngIf="videos.items.length > 0; else pesquisaVazia">
         <div class="list-card" infiniteScroll [infiniteScrollDistance]="1" [infiniteScrollThrottle]="1000"
             (scrolled)="onScroll()">
 
             <mat-card class="card" *ngFor="let video of videos.items">
                 <mat-card-header>
-                    <div mat-card-avatar class="header-image"></div>
                     <mat-card-title>{{ video.titulo }}</mat-card-title>
-                    <mat-card-subtitle>{{ video.canal }}</mat-card-subtitle>
+                    <mat-card-subtitle>{{ video.tituloCanal }}</mat-card-subtitle>
                 </mat-card-header>
                 <img mat-card-image [src]="video.imagens[2].urlImagem" [alt]="video.titulo">
                 <mat-card-content>
@@ -19,4 +18,11 @@
             </mat-card>
         </div>
     </div>
+
+    <ng-template #pesquisaVazia>
+        <div *ngIf="!inicializado">
+            <h2>Não encontramos vídeos com o termo buscado.</h2>
+            <h2>Utilize outras palavras chave.</h2>
+        </div>
+    </ng-template>
 </div>
