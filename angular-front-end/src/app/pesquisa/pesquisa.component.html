@@ -1,10 +1,10 @@
 <div class="container">
 
     <mat-form-field>
-        <input matInput placeholder="Procurar por" [formControl]="textoPesquisa">
+        <input matInput placeholder="Pesquisar" [formControl]="textoPesquisa">
         <mat-error *ngIf="textoPesquisa.invalid">{{ obterMensagensErro() }}</mat-error>
     </mat-form-field>
 
-    <button mat-raised-button color="primary" (click)="onPesquisar(textoPesquisa)">Pesquisar</button>
+    <button mat-raised-button color="primary" (click)="onPesquisar(textoPesquisa)">Buscar</button>
 
 </div>
