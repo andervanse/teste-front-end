@@ -23,6 +23,7 @@
  
 <div mat-dialog-actions>    
     <button mat-raised-button class="btn-minimize" *ngIf="!hideMinimizeBtn" (click)="onMinimize()">Minimizar</button>
+    <span class="fill-space"></span>
     <button mat-raised-button class="btn-maximize" *ngIf="hideMinimizeBtn" (click)="onMaximize()">Maximizar</button>
     <span class="fill-space"></span>
     <button mat-raised-button [mat-dialog-close]="data">Fechar</button>

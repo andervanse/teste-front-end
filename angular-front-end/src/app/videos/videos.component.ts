@@ -55,6 +55,11 @@ export class VideosComponent implements OnInit, OnDestroy {
     this.scrollDown.emit(this.videos.pesquisa);
   }
 
+  
+  onScrollTop(evt) {
+    window.scrollTo({ left: 0, top: 0, behavior: 'smooth' });
+  }
+
   onAssistirVideoClick(video: Video) {
     this.videoSelecionado.emit(video);
   }

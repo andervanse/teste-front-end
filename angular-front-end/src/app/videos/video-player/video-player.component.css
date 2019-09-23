@@ -2,6 +2,10 @@
     overflow: hidden;
 }
 
+.fill-space {
+    margin: 0.5em 0em 0em 0.5em;
+}
+
 .statistics span {
     margin: 4px 4px 4px 4px;
     font-size: 14px;

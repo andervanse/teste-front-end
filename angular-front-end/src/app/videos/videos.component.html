@@ -17,12 +17,18 @@
                 </mat-card-actions>
             </mat-card>
         </div>
+
+        <div class="btn-float">
+            <button mat-fab color="primary" (click)="onScrollTop($event)">
+                <i class="material-icons">keyboard_arrow_up</i>
+            </button>
+        </div>
     </div>
 
     <ng-template #pesquisaVazia>
         <div *ngIf="!inicializado">
-            <h2>Não encontramos vídeos com o termo buscado.</h2>
-            <h2>Utilize outras palavras chave.</h2>
+            <h3>Não encontramos vídeos com o termo buscado.</h3>
+            <h3>Utilize outras palavras chave.</h3>
         </div>
     </ng-template>
 </div>
