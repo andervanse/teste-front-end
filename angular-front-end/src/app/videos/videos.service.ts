@@ -45,8 +45,6 @@ export class VideosService {
                     return this.videos;
                 })
             );
-
-        //return this.fakeVideoData();
     }
 
     obterEstatisticasVideo(videoId: string): Observable<Estatisticas> {
@@ -72,7 +70,6 @@ export class VideosService {
                     return estatisticas;
                 })
             );
-        //return this.fakeStatisticsData();
     }
 
 
@@ -101,84 +98,5 @@ export class VideosService {
         }
 
         return video;
-    }
-
-
-    fakeVideoData() {
-        let response = {
-            prevPageToken: 'AAA',
-            nextPageToken: 'BBB',
-            items: [{
-                id: {
-                    videoId: "phrvis8K4Zw"
-                },
-                snippet: {
-                    channelId: "UCSivRyE2mqXK8XkkAM6Ep0g",
-                    publishedAt: "2019-01-01T23:00:42.000Z",
-                    description: "( Recomendo Assistir ) \n\n✓ Primeiramente Se Gostou Do Video Deixa Um LIKE !! \n\n✓ Segundamente INSCREVA-SE No Canal Para Não Perder Mais Videos Como Este, e ativa o \"🔔\" sininho.",
-                    title: "Teste de fidelidade: ( ͡° ͜ʖ ͡°) Mulher trai o namorado será? Convidado muito \"louco\". (parte:4-4).",
-                    thumbnails: {
-                        default: {
-                            url: "https://i.ytimg.com/vi/phrvis8K4Zw/default.jpg",
-                            width: 120,
-                            height: 90
-                        },
-                        medium: {
-                            url: "https://i.ytimg.com/vi/phrvis8K4Zw/mqdefault.jpg",
-                            width: 320,
-                            height: 180
-                        },
-                        high: {
-                            url: "https://i.ytimg.com/vi/phrvis8K4Zw/hqdefault.jpg",
-                            width: 480,
-                            height: 360
-                        }
-                    }
-                }
-            }]
-        };
-        this.videos = new ListaVideos();
-        this.videos.pesquisa.texto = "Teste";
-        this.videos.pesquisa.paginaAnterior = response.prevPageToken;
-        this.videos.pesquisa.proximaPagina = response.nextPageToken;
-        let video = this.converterParaModelo(response.items[0]);
-        this.videos.items.push(video);
-
-        this.pesquisaRealizada.next(this.videos);
-        return of(this.videos);
-    }
-
-    fakeStatisticsData() {
-        let response = {
-            items: [
-                {
-                    kind: "youtube#video",
-                    etag: "\"p4VTdlkQv3HQeTEaXgvLePAydmU/eYXMmPsSvMkbEG9a-rwTZCJ_zVw\"",
-                    id: "phrvis8K4Zw",
-                    statistics: {
-                        viewCount: "60661",
-                        likeCount: "575",
-                        dislikeCount: "109",
-                        favoriteCount: "0",
-                        commentCount: "30"
-                    }
-                }
-            ]
-        }
-
-        let estatisticas = null;
-
-        for (let i = 0; i < response.items.length; i++) {
-            if (response.items[i].statistics) {
-                estatisticas = new Estatisticas();
-                estatisticas.quantidadeViews = response.items[0].statistics.viewCount;
-                estatisticas.quantidadeLikes = response.items[0].statistics.likeCount;
-                estatisticas.quantidadeDeslikes = response.items[0].statistics.dislikeCount;
-                estatisticas.quantidadeFavoritos = response.items[0].statistics.favoriteCount;
-                estatisticas.quantidadeComentarios = response.items[0].statistics.commentCount;
-            }
-        }
-
-        return of(estatisticas);
     }
 }
